@@ -5,7 +5,6 @@ import java.util.Arrays;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author simon7323
@@ -58,14 +57,43 @@ public class SortingSearching {
 
     public void mergeSort(int[] array) {
         // if we are 1 item, we are done
-        if(array.length<=1){
+        if (array.length <= 1) {
             return;
         }
         //divide into 2 arrays
-        int split=array.length/2;
+        int split = array.length / 2;
         //create 2 arrays
-        int[] front = Arrays.copyOfRange(array,0, split);
-        int[] back = Arrays.copyOfRange(array, split,array.length);
+        int[] front = Arrays.copyOfRange(array, 0, split);
+        int[] back = Arrays.copyOfRange(array, split, array.length);
+
+        //recursively sort
+        mergeSort(front);
+        mergeSort(back);
+
+        //put numbers in correct spot
+        int fSpot = 0;
+        int bSpot = 0;
+        for (int i = 0; i < array.length; i++) {
+            //no more items in front array
+            if (fSpot == front.length) {
+                //put item from back array in 
+                array[i] = back[bSpot];
+                bSpot++;
+                //put item from front array in
+            } else if (bSpot == back.length) {
+                //put item from front array
+                array[i] = front[fSpot];
+                fSpot++;
+
+            } else if (front[fSpot] < back[bSpot]) {
+                //put front item in 
+                array[i] = front[fSpot];
+                fSpot++;
+            } else {
+                array[i] = back[bSpot];
+                bSpot++;
+            }
+        }
     }
 
     public void insertSort(int[] array) {
@@ -83,6 +111,17 @@ public class SortingSearching {
             }
         }
     }
+     public int seqSearch(int [] array,int number){
+        for(int i=0;i<array.length;i++){
+            //did i find it?
+            if(array[i]==number){
+            //tell them where
+                return i;    
+            }        
+        } 
+        //didnt find it
+        return-1;
+     }
 
     public static void main(String[] args) {
         SortingSearching test = new SortingSearching();
@@ -99,7 +138,7 @@ public class SortingSearching {
             System.out.println(numbers[i]);
         }
         //SORT HERE
-        test.insertSort(numbers);
+        test.mergeSort(numbers);
 
         //AFTER
         System.out.println("AFTER: ");
