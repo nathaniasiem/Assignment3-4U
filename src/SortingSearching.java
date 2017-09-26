@@ -1,3 +1,6 @@
+
+import java.util.Arrays;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -31,18 +34,53 @@ public class SortingSearching {
 
     public void bubbleSort(int[] array) {
         //keep track of end
-        int last=array.length;
+        int last = array.length;
         //boolean to flag a swap
         boolean swap = true;
         //continue if swap has been made
-        while(swap){
+        while (swap) {
             // assume no swaps will be done
-            swap=false;
+            swap = false;
             //look for swaps
-            for (int i=0;i<last;i++){
-                
+            for (int i = 0; i < last - 1; i++) {
+                //find a bigger value?
+                if (array[i] > array[i + 1]) {
+                    //swap
+                    swap(array, i, i + 1);
+                    //set flag to true
+                    swap = true;
+                }
             }
-            
+            //move last position tracker
+            last--;
+        }
+    }
+
+    public void mergeSort(int[] array) {
+        // if we are 1 item, we are done
+        if(array.length<=1){
+            return;
+        }
+        //divide into 2 arrays
+        int split=array.length/2;
+        //create 2 arrays
+        int[] front = Arrays.copyOfRange(array,0, split);
+        int[] back = Arrays.copyOfRange(array, split,array.length);
+    }
+
+    public void insertSort(int[] array) {
+        //start going through the array
+        for (int i = 0; i < array.length - 1; i++) {
+            //store position
+            //so we don't modify our loop counter
+            int position = i;
+            //check values beside each other
+            while (position >= 0 && array[position] > array[position + 1]) {
+                //if out of place ,swap it downwards
+                //until correct position is reached
+                swap(array, position, position + 1);
+                position--;
+            }
         }
     }
 
@@ -61,7 +99,7 @@ public class SortingSearching {
             System.out.println(numbers[i]);
         }
         //SORT HERE
-        test.selectSort(numbers);
+        test.insertSort(numbers);
 
         //AFTER
         System.out.println("AFTER: ");
