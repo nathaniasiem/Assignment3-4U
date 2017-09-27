@@ -111,17 +111,41 @@ public class SortingSearching {
             }
         }
     }
-     public int seqSearch(int [] array,int number){
-        for(int i=0;i<array.length;i++){
+
+    public int seqSearch(int[] array, int number) {
+        //start going through array
+        for (int i = 0; i < array.length; i++) {
             //did i find it?
-            if(array[i]==number){
-            //tell them where
-                return i;    
-            }        
-        } 
+            if (array[i] == number) {
+                //tell them where
+                return i;
+            }
+        }
         //didnt find it
+        return -1;
+    }
+
+    //binary search
+    public int binSearch(int[] array, int target) {
+        int min = 0;
+        int max = array.length - 1;
+        while (max > min) {
+            int guess = (max + min) / 2;
+            //find it??
+            if(array[guess]==target){
+                return guess;
+            }else if(target>array[guess]){
+                //check number in the right
+                min = guess+1; 
+            }else{
+                //check number in the left
+                max=guess -1;
+            }
+        }
+        //didn't find it
         return-1;
-     }
+    }
+    
 
     public static void main(String[] args) {
         SortingSearching test = new SortingSearching();
