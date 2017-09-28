@@ -127,15 +127,19 @@ public class SortingSearching {
 
     //binary search
     public int binSearch(int[] array, int target) {
+       //beginning of the list
         int min = 0;
+        //end of the list
         int max = array.length - 1;
+        //loop to keep going until number matches the middle number
         while (max > min) {
+            //divide the list in two 
             int guess = (max + min) / 2;
             //find it??
             if(array[guess]==target){
                 return guess;
             }else if(target>array[guess]){
-                //check number in the right
+                //check number in the top of the list
                 min = guess+1; 
             }else{
                 //check number in the left
