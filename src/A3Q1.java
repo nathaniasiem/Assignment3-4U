@@ -11,32 +11,25 @@ public class A3Q1 {
 
     //modified selection sort
     public void selectionSort(int[] array) {
-        //keep track of which position we are sorting
-        for (int position = 0; position < array.length; position++) {
-            //set minimum value
-            int minNum = 1;
-            //go through the rest looking for a smaller number
-            for (int i = position + 1; i < array.length; i++) {
-                //have we found a smaller number?
-                if (array[minNum] < array[position]) {
-                    //set new index of minimum value
-                    minNum = position;
-                }
+        //set variables 
+      int pos, j, minIndex, temp;
+      int n = array.length;
+      for (pos = 0; pos < n - 1; pos++) {
+            minIndex = pos;
+            for (j = pos + 1; j < n; j++)
+                  if (array[j] < array[minIndex])
+                        minIndex = j;
+            if (minIndex != pos) {
+                  temp = array[pos];
+                  array[pos] = array[minIndex];
+                  array[minIndex] = temp;
             }
-            if (minNum != position) {
-                int temp = array[position];
-                array[position] = array[minNum];
-                array[minNum] = temp;
-            }
-
-        }
-
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+      }
+}
+/**
+ * @param args the command line arguments
+ */
+public static void main(String[] args) {
         A3Q1 test = new A3Q1();
         //making a random array of integers
         int[] numbers = new int[10];
