@@ -127,7 +127,7 @@ public class SortingSearching {
 
     //binary search
     public int binSearch(int[] array, int target) {
-       //beginning of the list
+        //beginning of the list
         int min = 0;
         //end of the list
         int max = array.length - 1;
@@ -136,20 +136,19 @@ public class SortingSearching {
             //divide the list in two 
             int guess = (max + min) / 2;
             //find it??
-            if(array[guess]==target){
+            if (array[guess] == target) {
                 return guess;
-            }else if(target>array[guess]){
+            } else if (target > array[guess]) {
                 //check number in the top of the list
-                min = guess+1; 
-            }else{
+                min = guess + 1;
+            } else {
                 //check number in the left
-                max=guess -1;
+                max = guess - 1;
             }
         }
         //didn't find it
-        return-1;
+        return -1;
     }
-    
 
     public static void main(String[] args) {
         SortingSearching test = new SortingSearching();
@@ -166,7 +165,7 @@ public class SortingSearching {
             System.out.println(numbers[i]);
         }
         //SORT HERE
-        test.mergeSort(numbers);
+        test.insertSort(numbers);
 
         //AFTER
         System.out.println("AFTER: ");
