@@ -29,10 +29,13 @@ public class A3Q5 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //create a variable to test the boundaries
         A3Q5 test=new A3Q5();
+        //create an array of words
         String[] wordList = {"Food","Cake","Job","School","Samsung"};
+        //loop to go through each word and print out the sorted list
         for (int i=0; i<wordList.length;i++){
-            test.insertionSort(wordList);
+            //call the method
             System.out.println(wordList[i]);
         }
     }
