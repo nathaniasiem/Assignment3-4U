@@ -12,17 +12,17 @@ public class A3Q1 {
     //modified selection sort
     public void selectionSort(int[] array) {
        //set variables to help with swap 
-      int pos, j, minIndex, temp;
-      int n = array.length;
+      int pos, m, minIndex, temp;
+     
       //keep track of which position we are in
       //subtract 1 from length to check if we reached the last value
-      for (pos = 0; pos < n - 1; pos++) {
+      for (pos = 0; pos < array.length - 1; pos++) {
             minIndex = pos;
             //go through each number
-            for (j = pos + 1; j < n; j++)
+            for (m = pos + 1; m < array.length; m++)
                 //find the smallest number
-                  if (array[j] < array[minIndex])
-                        minIndex = j;
+                  if (array[m] < array[minIndex])
+                        minIndex = m;
             //condition when the small number is not in position
             //swap
             if (minIndex != pos) {
