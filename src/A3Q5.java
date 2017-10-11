@@ -9,17 +9,17 @@
  * @author candy
  */
 public class A3Q5 {
-    public void insertionSort(String [] word){
-        //go through the array of word
-        for (int i=0;i<word.length;i++){
+    public void insertionSort(String [] wd){
+        //go through the array of words
+        for (int i=0;i<wd.length;i++){
             //create a variable to keep track the position
             int spot = i;
             //keep program running when position
-            while(spot>0 && word[spot-1].compareToIgnoreCase(word[spot])>0){
+            while(spot>0 && wd[spot-1].compareToIgnoreCase(wd[spot])>0){
                 //swap integers according  to the alphabetical order
-                String temp = word[spot];
-                word[spot]=word[spot-1];
-                word[spot-1]=temp;
+                String temp = wd[spot];
+                wd[spot]=wd[spot-1];
+                wd[spot-1]=temp;
                 //decreases until reach the very last word
                 spot--;
             }
@@ -29,14 +29,11 @@ public class A3Q5 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //create a variable to test the boundaries
         A3Q5 test=new A3Q5();
-        //create an array of words
-        String[] wordList = {"Food","Cake","Job","School","Samsung"};
-        //loop to go through each word and print out the sorted list
-        for (int i=0; i<wordList.length;i++){
-            //call the method
-            System.out.println(wordList[i]);
+        String[] wList = {"Food","Cake","Job","School","Samsung"};
+        for (int i=0; i<wList.length;i++){
+            test.insertionSort(wList);
+            System.out.println(wList[i]);
         }
     }
 }
